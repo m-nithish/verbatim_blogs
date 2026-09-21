@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verbatim — Buyer's Guides & Comparisons</title>
+    <style>
+        :root {
+            --ink: #1c2621;
+            --ink-soft: #4b564e;
+            --ground: #faf7f1;
+            --card: #f1ece0;
+            --line: #d8d2c4;
+            --forest: #1f4a3d;
+            --forest-strong: #163a30;
+            --amber: #c98a2c;
+            --amber-ink: #241a06;
+            --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+            --font-body: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+            --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --ink: #f1eee5;
+                --ink-soft: #b9c2b7;
+                --ground: #101309;
+                --card: #191d15;
+                --line: #2a3025;
+                --forest: #79c4a0;
+                --forest-strong: #9adcbb;
+                --amber: #e9b15c;
+                --amber-ink: #221a08;
+            }
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--ground);
+            color: var(--ink);
+            font-family: var(--font-body);
+            font-size: 17px;
+            line-height: 1.6;
+        }
+        .page {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 6rem;
+        }
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--forest-strong);
+            margin-bottom: 1.1rem;
+        }
+        h1 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 0 0 1rem;
+        }
+        .dek {
+            font-size: 1.25rem;
+            color: var(--ink-soft);
+            max-width: 60ch;
+            margin: 0 0 3rem;
+        }
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .card:hover {
+            border-color: var(--forest);
+            transform: translateY(-2px);
+        }
+        .card-tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--forest-strong);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .card h2 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.35rem;
+            line-height: 1.3;
+            margin: 0 0 0.75rem;
+        }
+        .card p {
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+            margin: 0 0 1.25rem;
+        }
+        .card-link {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.03em;
+            color: var(--forest-strong);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .card-link::after {
+            content: "→";
+            transition: transform 0.2s;
+        }
+        .card:hover .card-link::after {
+            transform: translateX(4px);
+        }
+        footer.page-footer {
+            margin-top: 4rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid var(--line);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            text-align: center;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page">
+    <header>
+        <p class="eyebrow">
+            <svg class="mark" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/>
+                <path d="M4 8.2L6.6 10.8L12 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Verbatim Guides
+        </p>
+        <h1>Buyer's Guides & Product Comparisons</h1>
+        <p class="dek">Practical, research-backed guides to help your team make confident software and product decisions.</p>
+    </header>
+
+    <main>
+        <div class="grid">
+            <a class="card" href="teamtailor.html">
+                <span class="card-tag">HR Software · Buyer's Guide</span>
+                <h2>How to Choose an Applicant Tracking System</h2>
+                <p>A 7-step framework for evaluating ATS platforms — with a scoring template, red-flag checklist, and candidate-experience test plan.</p>
+                <span class="card-link">Read guide</span>
+            </a>
+
+            <a class="card" href="bamboohr_vs_gusto.html">
+                <span class="card-tag">HR Software · Comparison</span>
+                <h2>BambooHR vs Gusto: Which Fits Your HR Team?</h2>
+                <p>HR-first vs payroll-first platforms compared — core HR features, pricing, integrations, implementation, and a decision framework.</p>
+                <span class="card-link">Read comparison</span>
+            </a>
+
+            <a class="card" href="hydro365_vs_fastandup.html">
+                <span class="card-tag">Health & Performance · Comparison</span>
+                <h2>Hydro365 vs Fast&Up Electrolytes</h2>
+                <p>Side-by-side nutrient profiles, sugar content, format, and use-case guidance for active Indian consumers in hot, humid conditions.</p>
+                <span class="card-link">Read comparison</span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <p>Published by Verbatim · <a href="https://verbatim.ai" style="color: inherit;">verbatim.ai</a></p>
+    </footer>
+</div>
+</body>
+</html>

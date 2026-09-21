@@ -1,0 +1,518 @@
+<!doctype html>
+<title>How to Choose an Applicant Tracking System</title>
+<meta name="description" content="A step-by-step guide to evaluating and selecting an ATS, with practical scoring frameworks and templates to make the right hiring tech decision.">
+<style>
+  :root {
+    --ink: #1c2621;
+    --ink-soft: #4b564e;
+    --ground: #faf7f1;
+    --card: #f1ece0;
+    --line: #d8d2c4;
+    --forest: #1f4a3d;
+    --forest-strong: #163a30;
+    --amber: #c98a2c;
+    --amber-ink: #241a06;
+    --danger: #9a3f2e;
+    --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+    --font-body: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #f1eee5;
+      --ink-soft: #b9c2b7;
+      --ground: #101309;
+      --card: #191d15;
+      --line: #2a3025;
+      --forest: #79c4a0;
+      --forest-strong: #9adcbb;
+      --amber: #e9b15c;
+      --amber-ink: #221a08;
+      --danger: #e2917d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #f1eee5;
+    --ink-soft: #b9c2b7;
+    --ground: #101309;
+    --card: #191d15;
+    --line: #2a3025;
+    --forest: #79c4a0;
+    --forest-strong: #9adcbb;
+    --amber: #e9b15c;
+    --amber-ink: #221a08;
+    --danger: #e2917d;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  a { color: var(--forest-strong); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 6rem;
+  }
+
+  /* ---- masthead ---- */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--forest-strong);
+    margin-bottom: 1.1rem;
+  }
+  .eyebrow .mark { flex: none; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 2.7rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.85rem;
+    text-wrap: balance;
+  }
+  .dek {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0 0 1.4rem;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    padding-bottom: 2.2rem;
+    margin-bottom: 2.4rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* ---- contents rail ---- */
+  .contents {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1.1rem 1.3rem 1.3rem;
+    margin: 0 0 2.8rem;
+  }
+  .contents-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 0.7rem;
+  }
+  .contents ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+  }
+  .contents a { color: var(--ink); text-decoration: none; }
+  .contents a:hover { color: var(--forest-strong); text-decoration: underline; }
+  .contents .n { color: var(--forest-strong); margin-right: 0.5em; }
+
+  /* ---- body typography ---- */
+  article > section { margin-bottom: 2.6rem; }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.005em;
+    margin: 0 0 0.9rem;
+    text-wrap: balance;
+    scroll-margin-top: 1.5rem;
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.12rem;
+    margin: 1.4rem 0 0.6rem;
+  }
+  p { margin: 0 0 1rem; max-width: 66ch; }
+  article ul, article ol.plain { margin: 0 0 1rem; padding-left: 1.3rem; max-width: 62ch; }
+  article li { margin-bottom: 0.35rem; }
+  strong { font-weight: 600; }
+
+  .step-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+  .step-icon {
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--forest);
+    color: var(--ground);
+    display: grid;
+    place-items: center;
+    margin-top: 0.15rem;
+  }
+  .step-icon svg { width: 1.05rem; height: 1.05rem; stroke: var(--ground); }
+
+  /* ---- scoring table ---- */
+  .table-wrap { overflow-x: auto; margin: 0 0 0.8rem; border: 1px solid var(--line); border-radius: 3px; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 480px;
+    font-size: 0.92rem;
+  }
+  caption { text-align: left; padding: 0.7rem 0.9rem 0; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+  th, td {
+    padding: 0.55rem 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    font-variant-numeric: tabular-nums;
+  }
+  thead th {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--card);
+  }
+  tbody td:not(:first-child), tbody th:not(:first-child) { text-align: center; }
+  tr:last-child td { border-bottom: none; font-weight: 600; }
+  tr:last-child { background: var(--card); }
+  .table-note { font-size: 0.85rem; color: var(--ink-soft); font-style: italic; margin: 0.6rem 0 0; }
+
+  /* ---- pull quote ---- */
+  blockquote.quote {
+    margin: 1.6rem 0;
+    padding: 1.1rem 1.4rem;
+    border-left: 3px solid var(--amber);
+    background: var(--card);
+    border-radius: 0 3px 3px 0;
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    line-height: 1.5;
+    font-style: italic;
+  }
+  blockquote.quote cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+  }
+
+  /* ---- red flags ---- */
+  .flags {
+    border: 1px solid color-mix(in srgb, var(--danger) 45%, var(--line));
+    border-radius: 3px;
+    padding: 1rem 1.2rem;
+    background: color-mix(in srgb, var(--danger) 7%, var(--ground));
+  }
+  .flags ul { margin: 0; padding-left: 1.2rem; }
+  .flags li::marker { color: var(--danger); }
+
+  /* ---- CTA ---- */
+  .cta {
+    margin-top: 3rem;
+    padding: 2rem 1.8rem;
+    background: var(--forest);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta * { color: var(--ground); }
+  .cta h2 { color: var(--ground); margin-bottom: 0.5rem; }
+  .cta p { color: var(--ground); opacity: 0.92; max-width: 52ch; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    padding: 0.7rem 1.15rem;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--amber); color: var(--amber-ink) !important; font-weight: 600; }
+  .btn-primary:hover { filter: brightness(1.06); }
+  .btn-ghost { border-color: color-mix(in srgb, var(--ground) 45%, transparent); color: var(--ground) !important; }
+  .btn-ghost:hover { background: color-mix(in srgb, var(--ground) 12%, transparent); }
+
+  /* ---- faq ---- */
+  .faq-item { border-bottom: 1px solid var(--line); padding: 1.1rem 0; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item h3 { margin: 0 0 0.4rem; font-size: 1.02rem; }
+  .faq-item p { margin: 0; color: var(--ink-soft); }
+
+  footer.page-footer {
+    margin-top: 3rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+  footer.page-footer a { color: var(--ink-soft); }
+  .related { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin-top: 0.6rem; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<div class="page">
+  <header>
+    <p class="eyebrow">
+      <svg class="mark" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M4 8.2L6.6 10.8L12 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Buyer's guide &middot; Hiring software
+    </p>
+    <h1>How to Choose an Applicant Tracking System</h1>
+    <p class="dek">A practical, step-by-step framework for evaluating ATS platforms — including a scoring template and a red-flag checklist — so your team makes a confident, data-backed choice.</p>
+    <p class="meta">
+      <span>7-step framework</span>
+      <span>&middot;</span>
+      <span>~7 min read</span>
+      <span>&middot;</span>
+      <span>For HR &amp; talent acquisition teams</span>
+    </p>
+  </header>
+
+  <nav class="contents" aria-label="Table of contents">
+    <p class="contents-label">In this guide</p>
+    <ol>
+      <li><a href="#step-1"><span class="n">01</span>Define your core hiring workflows</a></li>
+      <li><a href="#step-2"><span class="n">02</span>Build an evaluation matrix</a></li>
+      <li><a href="#step-3"><span class="n">03</span>Run structured demos</a></li>
+      <li><a href="#step-4"><span class="n">04</span>Test the candidate experience</a></li>
+      <li><a href="#step-5"><span class="n">05</span>Separate real AI from hype</a></li>
+      <li><a href="#step-6"><span class="n">06</span>Compare total cost</a></li>
+      <li><a href="#step-7"><span class="n">07</span>Watch for red flags</a></li>
+      <li><a href="#faq"><span class="n">&middot;</span>FAQ</a></li>
+    </ol>
+  </nav>
+
+  <article>
+    <section>
+      <h2>Why a structured ATS selection process matters</h2>
+      <p>Choosing an applicant tracking system (ATS) is a high-stakes decision for any HR team. The right tool can streamline scheduling, communication, candidate evaluation, and employer branding, while also providing valuable metrics to improve hiring. But the wrong one can become a costly bottleneck that frustrates recruiters and candidates alike.</p>
+      <p>Yet many teams fall into a common trap: they compare feature lists side by side without first defining what success looks like for their organization. That leads to decision paralysis or, worse, a purchase that doesn't align with actual needs.</p>
+      <p>This guide gives you a practical, step-by-step framework to evaluate ATS platforms — including a scoring template and red-flag checklist — so you can make a confident, data-backed choice.</p>
+    </section>
+
+    <section id="step-1">
+      <div class="step-head">
+        <span class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M4 5h12M4 10h8M4 15h5" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h2>Define your core hiring workflows</h2>
+      </div>
+      <p>Before you look at any vendor, map out your current hiring process from application to offer. Identify the steps that take the most time and where errors or delays occur. For example:</p>
+      <ul>
+        <li>How many roles do you hire per month?</li>
+        <li>Do you collaborate across multiple locations or time zones?</li>
+        <li>What does your interview process look like (phone screens, panels, assessments)?</li>
+        <li>Which manual tasks — scheduling, resume forwarding, feedback collection — consume the most recruiter hours?</li>
+      </ul>
+      <p>Write down the three biggest pain points you want the ATS to solve. These become your primary evaluation criteria. If a platform doesn't clearly improve those areas, it's not the right fit regardless of how many bells and whistles it has.</p>
+    </section>
+
+    <section id="step-2">
+      <div class="step-head">
+        <span class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="1.5" stroke-width="1.6"/><path d="M3 8.5h14M8.5 3v14" stroke-width="1.6"/></svg>
+        </span>
+        <h2>Build an evaluation matrix around your must-haves</h2>
+      </div>
+      <p>A scoring matrix forces objectivity. Create a spreadsheet with each candidate ATS as a column and each criterion as a row. Weight the criteria based on what matters most to you. Common criteria to consider:</p>
+      <ul>
+        <li><strong>Ease of use</strong> for recruiters, hiring managers, and candidates</li>
+        <li><strong>Application management</strong> — centralized, easy to sort and filter</li>
+        <li><strong>Scheduling and communication tools</strong></li>
+        <li><strong>Candidate evaluation features</strong> — scorecards, notes, rankings</li>
+        <li><strong>Employer branding customization</strong> — careers pages, job post design</li>
+        <li><strong>Reporting and metrics</strong> — time-to-hire, source quality, funnel conversion</li>
+        <li><strong>Integration capabilities</strong> — with HRIS, email, calendar</li>
+        <li><strong>AI and automation</strong> — screening, ranking, resume parsing</li>
+        <li><strong>Cost and scalability</strong></li>
+      </ul>
+      <p>For each criterion, rate the vendor on a scale of 1 to 5. Be specific: don't just say "scheduling" — note whether it supports group interviews, time zone conversions, and automated reminders.</p>
+
+      <h3>Scoring template example</h3>
+      <p>For each vendor, assign a score from 1 (poor) to 5 (excellent) per row, then multiply by the weight.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Illustrative — replace scores with your own research and demos</caption>
+          <thead>
+            <tr><th scope="col">Criterion</th><th scope="col">Weight&nbsp;%</th><th scope="col">Vendor&nbsp;A</th><th scope="col">Vendor&nbsp;B</th><th scope="col">Vendor&nbsp;C</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Ease of use</th><td>20</td><td>4</td><td>3</td><td>5</td></tr>
+            <tr><th scope="row">Candidate communication</th><td>15</td><td>3</td><td>4</td><td>4</td></tr>
+            <tr><th scope="row">Evaluation tools</th><td>15</td><td>4</td><td>5</td><td>4</td></tr>
+            <tr><th scope="row">Employer branding</th><td>10</td><td>5</td><td>3</td><td>4</td></tr>
+            <tr><th scope="row">Reporting &amp; metrics</th><td>10</td><td>4</td><td>4</td><td>5</td></tr>
+            <tr><th scope="row">Integration</th><td>10</td><td>3</td><td>5</td><td>4</td></tr>
+            <tr><th scope="row">AI &amp; automation</th><td>10</td><td>4</td><td>4</td><td>3</td></tr>
+            <tr><th scope="row">Cost &amp; scalability</th><td>10</td><td>3</td><td>4</td><td>4</td></tr>
+            <tr><th scope="row">Weighted total</th><td>100</td><td>3.95</td><td>3.95</td><td>4.10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">This simple table prevents you from falling for a vendor's flashy demo while ignoring a critical weakness. If ease of use is your top priority — as it is for many small teams — the numbers will show you the clear leader.</p>
+    </section>
+
+    <section id="step-3">
+      <div class="step-head">
+        <span class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke-width="1.6"/><path d="M8.5 7.3v5.4l4.5-2.7-4.5-2.7z" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <h2>Run structured demos with real hiring scenarios</h2>
+      </div>
+      <p>Don't let vendors drive the demo. Send them your two or three most challenging workflows in advance and ask them to demonstrate how they'd handle:</p>
+      <ul>
+        <li>A candidate applies via mobile.</li>
+        <li>A hiring manager wants to compare three finalists side by side.</li>
+        <li>You need to send a batch update to all rejected applicants.</li>
+      </ul>
+      <p>During the demo, have your team members actually click through the interface (if possible) to gauge intuitiveness. Ask about setup time, onboarding support, and how changes are handled. An ATS that's easy to configure is worth more than one with endless features that require a consultant.</p>
+    </section>
+
+    <section id="step-4">
+      <div class="step-head">
+        <span class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3" stroke-width="1.6"/><path d="M4 17c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h2>Test the candidate experience from the other side</h2>
+      </div>
+      <p>Your candidates are your brand ambassadors, even if they don't get the job. The application process should reflect that. Create a test account and apply for a mock role to see what candidates experience.</p>
+      <p>Does the application take minutes or half an hour? Can they save progress and return later? Can they apply from a mobile device? Is the career site visually appealing and on-brand?</p>
+      <p>Good candidate experience isn't just a nice-to-have — it affects your employer brand and your offer acceptance rates. Look for platforms that are designed with candidate experience in mind. <a href="https://www.teamtailor.com">Teamtailor</a>, for example, is built to create branded career pages that candidates enjoy using — a design choice that's core to how the product is built, not an afterthought bolted onto a generic ATS.</p>
+    </section>
+
+    <section id="step-5">
+      <div class="step-head">
+        <span class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 3l1.6 4.2L16 9l-4.4 1.8L10 15l-1.6-4.2L4 9l4.4-1.8L10 3z" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <h2>Look for AI features that genuinely help — not hype</h2>
+      </div>
+      <p>AI ATS features can eliminate repetitive work by automatically screening, rating, and ranking candidates. These tools parse resumes, analyze skills, and flag top matches. But not all AI is created equal. Ask exactly what the AI does and where it might introduce bias.</p>
+      <p>A good screening AI should be transparent about what it considers and allow recruiters to override recommendations. Also ask about data privacy and how candidate information is stored and used.</p>
+    </section>
+
+    <section id="step-6">
+      <div class="step-head">
+        <span class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 2.5v15M6 6.2c0-1.5 1.6-2.7 4-2.7s4 1.2 4 2.7-1.6 2-4 2.5-4 1-4 2.5 1.6 2.8 4 2.8 4-1.2 4-2.8" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <h2>Compare total cost, not just subscription price</h2>
+      </div>
+      <p>Many vendors quote a per-user or per-employee fee, but implementation costs, training hours, and ongoing support add up. Ask for a detailed quote that includes:</p>
+      <ul>
+        <li>Subscription fee (monthly or annual)</li>
+        <li>Setup fee</li>
+        <li>Number of admin seats included</li>
+        <li>Additional fees for extra users or integrations</li>
+        <li>Cost of support tiers</li>
+      </ul>
+      <p>Don't be swayed by a low initial price if the platform requires lots of work to set up and maintain. Calculate the true cost over a 24-month period to get a fair comparison. (For reference, see <a href="https://www.teamtailor.com/pricing">Teamtailor's own pricing page</a> as an example of what a transparent quote should look like.)</p>
+    </section>
+
+    <section id="step-7">
+      <div class="step-head">
+        <span class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 2.5L18 16H2L10 2.5z" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8v3.2" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="13.4" r="0.9" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <h2>Red flags to watch for during evaluation</h2>
+      </div>
+      <div class="flags">
+        <ul>
+          <li>The vendor is vague about data security and GDPR compliance.</li>
+          <li>The demo is scripted and doesn't adapt to your specific needs.</li>
+          <li>The onboarding process is complex and poorly documented.</li>
+          <li>The company has a reputation for poor customer support.</li>
+          <li>The interface is clunky and not mobile-friendly.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Use an evaluation framework to make the final choice</h2>
+      <p>Once you've scored each ATS, meet with your hiring team to discuss the results. Walk through the top two or three candidates and have each person share their experience from the demos. If your scores are close, consider a pilot with a real role and measure success based on your original criteria.</p>
+      <p>The ATS you choose should not just make your life easier — it should elevate the experience for everyone involved. That's part of why HR teams researching this decision keep coming across Teamtailor, noted by one client as:</p>
+      <blockquote class="quote">
+        &ldquo;An excellent choice for those looking for an intuitive, efficient, and complete solution. The platform improves the recruitment experience for both candidates and internal teams — an investment that brings concrete results and positively impacts the hiring process.&rdquo;
+        <cite>— Teamtailor customer</cite>
+      </blockquote>
+    </section>
+
+    <section>
+      <h2>Make your ATS selection process collaborative and data-driven</h2>
+      <p>The best ATS decision is one your whole team supports. By using a structured evaluation and involving your hiring managers early, you ensure the new tool gets adopted and actually improves your hiring outcomes.</p>
+      <p>If you're ready to start evaluating, consider placing Teamtailor on your shortlist. It's designed to be user-friendly for both candidates and your team, and you can explore its features in a low-pressure, practical way.</p>
+    </section>
+
+    <div class="cta">
+      <h2>Ready to see if Teamtailor fits your hiring needs?</h2>
+      <p>Explore the platform trusted by over 10,000 companies worldwide, and try it against your own workflows.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://www.teamtailor.com/demo">Book a demo</a>
+        <a class="btn btn-ghost" href="https://www.teamtailor.com">Explore Teamtailor</a>
+      </div>
+    </div>
+
+    <section id="faq" style="margin-top:2.8rem;">
+      <h2>FAQ</h2>
+      <div class="faq-item">
+        <h3>What are the most important features to look for in an ATS?</h3>
+        <p>The most important features depend on your specific hiring challenges. Core features to consider include ease of use, centralized application management, scheduling and communication tools, candidate evaluation capabilities (like scorecards and ratings), employer branding options, reporting and metrics, and automation or AI features if you want to reduce manual screening.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I compare different ATS vendors objectively?</h3>
+        <p>Create a scoring matrix with weighted criteria based on your top hiring pain points. Rate each vendor on those criteria using a 1–5 scale, multiply by the weight, and sum totals. Also run demos with real scenarios and test candidate experience. This prevents subjective impressions from dominating your decision.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What are the red flags to watch out for when selecting an ATS?</h3>
+        <p>Key red flags include unclear data security and compliance practices, scripted demos that don't address your needs, complex onboarding that suggests the system is hard to use, poor customer support reputation, and an unfriendly or non-mobile interface for candidates. Always ask about implementation costs and total cost over two years.</p>
+      </div>
+    </section>
+  </article>
+
+  <footer class="page-footer">
+    <p>Related reading</p>
+    <p class="related">
+      <a href="https://www.teamtailor.com/en/resources/the-definitive-guide-to-applicant-tracking-systems/">The Definitive Guide to Applicant Tracking Systems — Teamtailor</a>
+    </p>
+  </footer>
+</div>
