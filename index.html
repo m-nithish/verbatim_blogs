@@ -6,30 +6,30 @@
     <title>Verbatim — Buyer's Guides & Comparisons</title>
     <style>
         :root {
-            --ink: #1c2621;
-            --ink-soft: #4b564e;
-            --ground: #faf7f1;
-            --card: #f1ece0;
-            --line: #d8d2c4;
-            --forest: #1f4a3d;
-            --forest-strong: #163a30;
-            --amber: #c98a2c;
-            --amber-ink: #241a06;
+            --ink: #24271C;
+            --ink-soft: #565A48;
+            --ground: #F4F0E6;
+            --card: #FBF9F1;
+            --line: #DDD6C0;
+            --forest: #5C6B3C;
+            --forest-strong: #46532C;
+            --amber: #C25A2E;
+            --amber-ink: #A2461F;
             --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
-            --font-body: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-            --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+            --font-body: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+            --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
         }
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
-                --ink: #f1eee5;
-                --ink-soft: #b9c2b7;
-                --ground: #101309;
-                --card: #191d15;
-                --line: #2a3025;
-                --forest: #79c4a0;
-                --forest-strong: #9adcbb;
-                --amber: #e9b15c;
-                --amber-ink: #221a08;
+                --ink: #ECEAD8;
+                --ink-soft: #CFCDBA;
+                --ground: #23271A;
+                --card: #2C3122;
+                --line: #3A4030;
+                --forest: #A9B97E;
+                --forest-strong: #A9B97E;
+                --amber: #D2742E;
+                --amber-ink: #D2742E;
             }
         }
         * { box-sizing: border-box; }
@@ -79,15 +79,16 @@
         .card {
             background: var(--card);
             border: 1px solid var(--line);
-            border-radius: 4px;
+            border-radius: 16px;
             padding: 2rem;
             text-decoration: none;
             color: inherit;
-            transition: border-color 0.2s, transform 0.2s;
+            transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
         }
         .card:hover {
             border-color: var(--forest);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px -18px rgba(36,39,28,.30);
         }
         .card-tag {
             font-family: var(--font-mono);
@@ -142,7 +143,7 @@
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="page">
